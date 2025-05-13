@@ -248,32 +248,111 @@ body {
 
 @media (max-width: 600px) {
     .container {
-        padding: 0.5rem 0.1rem;
+        padding: 1rem 0.5rem;
     }
     .main-header h1 {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
     .emoji {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
     .card {
-        padding: 0.7rem 0.2rem;
+        padding: 1rem 0.5rem;
+        margin-bottom: 1rem;
     }
     .btn, .btn-lg {
-        font-size: 0.98rem;
-        padding: 0.7rem 1.1rem;
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
     }
     .schedule-table th, .schedule-table td {
-        padding: 0.6rem 0.3rem;
-        font-size: 0.97rem;
+        padding: 0.75rem 0.5rem;
+        font-size: 0.9rem;
     }
     .schedule-table {
-        min-width: 350px;
+        min-width: 100%;
+    }
+    .table-responsive {
+        margin: 0 -0.5rem;
+        padding: 0 0.5rem;
+        width: calc(100% + 1rem);
+    }
+    .navigation {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+    }
+    .navigation .btn {
+        width: 100%;
+        text-align: center;
     }
     .toast {
-        right: 0.5rem;
-        bottom: 0.5rem;
-        padding: 0.7rem 1.1rem;
-        font-size: 0.98rem;
+        left: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+        text-align: center;
+        padding: 0.75rem 1rem;
+    }
+}
+
+/* Member Management Styles */
+.form {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form input[type="email"] {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.7rem;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form input[type="email"]:focus {
+    border-color: var(--primary-color);
+}
+
+.member-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.member-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: var(--background-color);
+    border-radius: 0.7rem;
+    border: 1px solid var(--border-color);
+}
+
+.member-item span {
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+@media (max-width: 600px) {
+    .form {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .form input[type="email"] {
+        width: 100%;
+    }
+    
+    .member-item {
+        flex-direction: column;
+        gap: 0.75rem;
+        text-align: center;
+    }
+    
+    .member-item .btn {
+        width: 100%;
     }
 } 
