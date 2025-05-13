@@ -1,0 +1,44 @@
+[
+  {
+    "day": "Monday",
+    "session": "Leetcode",
+    "description": "5m understand, 25m solve, 15m discuss",
+    "name": "TEAM "
+  },
+  {
+    "day": "Tuesday",
+    "session": "Leetcode",
+    "description": "5m understand, 25m solve, 15m discuss",
+    "name": "TEAM"
+  },
+  {
+    "day": "Wednesday",
+    "session": "Teaching 1",
+    "description": "30m teach, 15m example",
+    "name": "LOLU"
+  },
+  {
+    "day": "Thursday",
+    "session": "Mock Interview",
+    "description": "Easy/medium Qs, focus on breakdown",
+    "name": "ELYON"
+  },
+  {
+    "day": "Friday",
+    "session": "Leetcode",
+    "description": "5m understand, 25m solve, 15m discuss",
+    "name": "TEAM"
+  },
+  {
+    "day": "Saturday",
+    "session": "Teaching 2",
+    "description": "30m teach, 15m example",
+    "name": "STEPH"
+  },
+  {
+    "day": "Sunday",
+    "session": "Driver Coding",
+    "description": "Live solving with shared screen",
+    "name": "HOLY"
+  }
+]

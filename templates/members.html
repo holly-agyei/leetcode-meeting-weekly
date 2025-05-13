@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leetcode Group - Member Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Member Management</h1>
+        
+        <div class="card">
+            <h2>Add New Member</h2>
+            <form action="{{ url_for('add_member') }}" method="POST" class="form">
+                <input type="email" name="email" placeholder="Enter email address" required>
+                <button type="submit" class="btn">Add Member</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h2>Current Members</h2>
+            <div class="member-list">
+                {% for member in members %}
+                <div class="member-item">
+                    <span>{{ member }}</span>
+                    <form action="{{ url_for('remove_member') }}" method="POST" style="display: inline;">
+                        <input type="hidden" name="email" value="{{ member }}">
+                        <button type="submit" class="btn btn-danger">Remove</button>
+                    </form>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a href="{{ url_for('index') }}" class="btn">Back to Schedule</a>
+        </div>
+    </div>
+</body>
+</html> 
