@@ -7,34 +7,61 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <!-- SVG Decorations -->
+    <svg class="svg-bg top" viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#2563eb" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,149.3C960,160,1056,160,1152,138.7C1248,117,1344,75,1392,53.3L1440,32L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+    </svg>
+    <svg class="svg-bg bottom" viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#2563eb" fill-opacity="0.1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,261.3C960,256,1056,224,1152,208C1248,192,1344,192,1392,192L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+    </svg>
+
     <div class="container">
-        <h1>Member Management</h1>
+        <div class="main-header">
+            <h1>Member Management <span class="emoji">👥</span></h1>
+        </div>
         
         <div class="card">
             <h2>Add New Member</h2>
             <form action="{{ url_for('add_member') }}" method="POST" class="form">
-                <input type="email" name="email" placeholder="Enter email address" required>
-                <button type="submit" class="btn btn-primary">Add Member</button>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter member's email address" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg">
+                    <span class="emoji">➕</span> Add Member
+                </button>
             </form>
         </div>
 
         <div class="card">
             <h2>Current Members</h2>
-            <div class="member-list">
-                {% for member in members %}
-                <div class="member-item">
-                    <span>{{ member }}</span>
-                    <form action="{{ url_for('remove_member') }}" method="POST" style="display: inline; width: 100%;">
-                        <input type="hidden" name="email" value="{{ member }}">
-                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to remove {{ member }}?')">Remove</button>
-                    </form>
+            {% if members %}
+                <div class="member-list">
+                    {% for member in members %}
+                    <div class="member-item">
+                        <div class="member-info">
+                            <span class="member-email">{{ member }}</span>
+                        </div>
+                        <form action="{{ url_for('remove_member') }}" method="POST" class="member-action">
+                            <input type="hidden" name="email" value="{{ member }}">
+                            <button type="submit" class="btn btn-danger">
+                                <span class="emoji">🗑️</span> Remove
+                            </button>
+                        </form>
+                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
-            </div>
+            {% else %}
+                <div class="empty-state">
+                    <p>No members added yet. Add your first member above!</p>
+                </div>
+            {% endif %}
         </div>
 
         <div class="navigation">
-            <a href="{{ url_for('index') }}" class="btn btn-secondary">Back to Schedule</a>
+            <a href="{{ url_for('index') }}" class="btn btn-secondary">
+                <span class="emoji">📅</span> Back to Schedule
+            </a>
         </div>
     </div>
 </body>

@@ -248,144 +248,124 @@ body {
 
 @media (max-width: 600px) {
     .container {
-        padding: 0.5rem;
-        margin: 0;
-        width: 100%;
+        padding: 0.5rem 0.1rem;
     }
     .main-header h1 {
         font-size: 1.1rem;
-        padding: 0 0.5rem;
     }
     .emoji {
         font-size: 1.1rem;
     }
     .card {
-        padding: 0.75rem;
-        margin-bottom: 0.75rem;
-        border-radius: 0.75rem;
+        padding: 0.7rem 0.2rem;
     }
     .btn, .btn-lg {
-        font-size: 0.85rem;
-        padding: 0.4rem 0.75rem;
-        margin: 0.25rem;
-    }
-    .schedule-table {
-        min-width: 100%;
-        font-size: 0.85rem;
+        font-size: 0.98rem;
+        padding: 0.7rem 1.1rem;
     }
     .schedule-table th, .schedule-table td {
-        padding: 0.5rem 0.25rem;
-        font-size: 0.85rem;
+        padding: 0.6rem 0.3rem;
+        font-size: 0.97rem;
     }
-    .table-responsive {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-    .navigation {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0.5rem;
-        padding: 0 0.5rem;
-    }
-    .navigation .btn {
-        width: 100%;
-        text-align: center;
-        margin: 0;
+    .schedule-table {
+        min-width: 350px;
     }
     .toast {
-        left: 0.5rem;
         right: 0.5rem;
         bottom: 0.5rem;
-        text-align: center;
-        padding: 0.5rem;
-        font-size: 0.9rem;
-    }
-    .form {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-    .form input[type="email"] {
-        width: 100%;
-        font-size: 0.9rem;
-        padding: 0.5rem;
-    }
-    .member-item {
-        flex-direction: column;
-        gap: 0.5rem;
-        text-align: center;
-        padding: 0.5rem;
-    }
-    .member-item span {
-        font-size: 0.9rem;
-    }
-    .member-item .btn {
-        width: 100%;
-        margin: 0;
+        padding: 0.7rem 1.1rem;
+        font-size: 0.98rem;
     }
 }
 
-/* Member Management Styles */
-.form {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
+/* Form Styles */
+.form-group {
+    margin-bottom: 1.5rem;
 }
 
-.form input[type="email"] {
-    flex: 1;
-    padding: 0.75rem 1rem;
-    border: 1px solid var(--border-color);
-    border-radius: 0.7rem;
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--secondary-color);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius);
     font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus {
     outline: none;
-    transition: border-color 0.2s;
-}
-
-.form input[type="email"]:focus {
     border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
+/* Member List Styles */
 .member-list {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 1rem;
 }
 
 .member-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.75rem 1rem;
+    padding: 1rem;
     background: var(--background-color);
-    border-radius: 0.7rem;
-    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.member-item span {
-    font-size: 1rem;
+.member-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.member-info {
+    flex: 1;
+}
+
+.member-email {
+    font-weight: 500;
     color: var(--text-color);
 }
 
+.member-action {
+    margin-left: 1rem;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 2rem;
+    color: var(--secondary-color);
+    background: var(--background-color);
+    border-radius: var(--radius);
+}
+
+.empty-state p {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+/* Responsive Adjustments */
 @media (max-width: 600px) {
-    .form {
-        flex-direction: column;
-        gap: 0.75rem;
-    }
-    
-    .form input[type="email"] {
-        width: 100%;
-    }
-    
     .member-item {
         flex-direction: column;
-        gap: 0.75rem;
+        gap: 1rem;
         text-align: center;
     }
-    
-    .member-item .btn {
-        width: 100%;
+
+    .member-action {
+        margin-left: 0;
+    }
+
+    .form-group input {
+        font-size: 16px; /* Prevents zoom on mobile */
     }
 } 
