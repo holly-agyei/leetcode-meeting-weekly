@@ -15,8 +15,9 @@ app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = os.getenv('EMAIL_USER')
 app.config['MAIL_PASSWORD'] = os.getenv('EMAIL_PASSWORD')
-app.config['MAIL_DEFAULT_SENDER'] = "agyeiholy978@gmail.com"
-print("MAIL_DEFAULT_SENDER:", app.config['MAIL_DEFAULT_SENDER'])
+app.config['MAIL_DEFAULT_SENDER'] = os.getenv('EMAIL_USER', "agyeiholy978@gmail.com")
+
+# Initialize mail
 mail = Mail(app)
 
 # Initial schedule data
@@ -30,26 +31,25 @@ INITIAL_SCHEDULE = [
     {"day": "Sunday", "session": "Driver Coding", "description": "Live solving with shared screen", "name": ""}
 ]
 
-# Load or create schedule.json
+# Load schedule from environment variable or use initial schedule
 def load_schedule():
-    try:
-        with open('schedule.json', 'r') as f:
-            return json.load(f)
-    except FileNotFoundError:
-        with open('schedule.json', 'w') as f:
-            json.dump(INITIAL_SCHEDULE, f, indent=2)
-        return INITIAL_SCHEDULE
+    schedule_json = os.getenv('SCHEDULE_DATA')
+    if schedule_json:
+        try:
+            return json.loads(schedule_json)
+        except json.JSONDecodeError:
+            return INITIAL_SCHEDULE
+    return INITIAL_SCHEDULE
 
-# Load members list
+# Load members from environment variable or use initial members
 def load_members():
-    try:
-        with open('members.json', 'r') as f:
-            return json.load(f)
-    except FileNotFoundError:
-        members = ["holy@leetcodegroup.com", "example1@gmail.com", "example2@gmail.com"]
-        with open('members.json', 'w') as f:
-            json.dump(members, f, indent=2)
-        return members
+    members_json = os.getenv('MEMBERS_DATA')
+    if members_json:
+        try:
+            return json.loads(members_json)
+        except json.JSONDecodeError:
+            return ["holy@leetcodegroup.com"]
+    return ["holy@leetcodegroup.com"]
 
 @app.route('/')
 def index():
@@ -68,8 +68,9 @@ def add_member():
         members = load_members()
         if email not in members:
             members.append(email)
-            with open('members.json', 'w') as f:
-                json.dump(members, f, indent=2)
+            # In production, you would need to update the environment variable
+            # This is just for demonstration
+            print(f"Member added: {email}")
     return redirect(url_for('members'))
 
 @app.route('/remove_member', methods=['POST'])
@@ -79,8 +80,9 @@ def remove_member():
         members = load_members()
         if email in members:
             members.remove(email)
-            with open('members.json', 'w') as f:
-                json.dump(members, f, indent=2)
+            # In production, you would need to update the environment variable
+            # This is just for demonstration
+            print(f"Member removed: {email}")
     return redirect(url_for('members'))
 
 @app.route('/update_schedule', methods=['POST'])
@@ -94,9 +96,9 @@ def update_schedule():
             item['name'] = data['name']
             break
     
-    # Save updated schedule
-    with open('schedule.json', 'w') as f:
-        json.dump(schedule, f, indent=2)
+    # In production, you would need to update the environment variable
+    # This is just for demonstration
+    print(f"Schedule updated for {data['day']}: {data['name']}")
     
     return jsonify({"status": "success"})
 
