@@ -1,6 +1,6 @@
 # Leetcode Crew Weekly Planner
 
-A beautiful, animated web application for managing a weekly Leetcode group schedule. Built with React, TypeScript, Tailwind CSS, and Framer Motion.
+A beautiful, animated web application for managing a weekly Leetcode group schedule. Built with React, TypeScript, and Framer Motion.
 
 ## Features
 
@@ -59,7 +59,7 @@ The project structure is organized as follows:
 - `src/components/` - React components
 - `src/types.ts` - TypeScript interfaces
 - `src/App.tsx` - Main application component
-- `src/index.css` - Global styles and Tailwind configuration
+- `src/index.css` - Global styles
 
 ## License
 
